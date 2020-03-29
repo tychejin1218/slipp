@@ -3,3 +3,5 @@
 >> ###### IED(Spring Tool Suite4) 
 >> ###### JDK1.8
 >> ###### Tomcat 7.0
+>> ###### Spring 4.3.25
+>> ###### Maven 4.0.0
