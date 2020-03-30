@@ -14,7 +14,14 @@
 			<version>4.3.25.RELEASE</version>
 		</dependency>
 		
-		<!-- jsp & servlet -->
+		<!-- logback 설정 -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+		
+		<!-- jsp & servlet 설정 -->
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
