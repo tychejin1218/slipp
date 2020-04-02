@@ -28,6 +28,11 @@
 			<artifactId>spring-test</artifactId>
 			<version>4.3.25.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.25.RELEASE</version>
+		</dependency>
 
 		<!-- logback 설정 -->
 		<dependency>
