@@ -1,6 +1,7 @@
 package net.slipp.domain.users;
 
 public class User {
+
 	private String userId;
 	private String password;
 	private String name;
@@ -85,5 +86,10 @@ public class User {
 		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
 	}
 }

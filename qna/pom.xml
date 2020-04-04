@@ -92,6 +92,7 @@
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
+					<!-- JAR 파일에 관련된 Source 파일이 다운로드 되어 직접 확인 가능 (F3) -->
 					<downloadSources>true</downloadSources>
 					<wtpversion>2.0</wtpversion>
 					<wtpContextName>/</wtpContextName>

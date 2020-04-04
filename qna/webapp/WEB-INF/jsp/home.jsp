@@ -3,11 +3,11 @@
 <html>
 <head>
 
-<%@ include file="./commons/_head.jspf" %>
+<%@ include file="./commons/_header.jspf" %>
 
 </head>
 <body>
-    <%@ include file="./commons/_top.jspf" %>
+	<%@ include file="./commons/_top.jspf" %>
 	  
 	<header class="jumbotron subhead" id="overview">
 	<div class="container">
