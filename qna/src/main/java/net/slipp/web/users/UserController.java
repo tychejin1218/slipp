@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,11 +30,17 @@ public class UserController {
 		this.userDao = userDao;
 	}*/
 
-	@RequestMapping("/form")
+	/*@RequestMapping("/form")
 	public String form() {
 		return "users/form";
-	}
+	}*/
 
+	@RequestMapping("/form")
+	public String form(Model model) {
+		model.addAttribute("user", new User());
+		return "users/form";
+	}
+	
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String crate(User user) {
 		log.debug("user : {}", user);

@@ -20,8 +20,41 @@
 				<div class="page-header">
 					<h1>회원가입</h1>
 				</div>
-							
-				<form Class="form-horizontal" action="/users/form" method="post">
+						
+				<!-- Spring form tag를 사용할 때는 modelAttribute를 통해서 자바에 오브젝트(model.addAttribute("user", new User());)와 맵핑이 필요 -->
+				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="post">
+					<div class="control-group">
+						<label class="control-label" for="userId">사용자 아이디</label>
+						<div class="controls">
+							<form:input path="userId"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password">비밀번호</label>
+						<div class="controls">
+							<form:input path="password"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="name">이름</label>
+						<div class="controls">
+							<form:input path="name"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="email">이메일</label>
+						<div class="controls">
+							<form:input path="email"/>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" class="btn btn-primary">회원가입</button>
+						</div>
+					</div>	
+				</form:form>
+						
+				<%-- <form Class="form-horizontal" action="/users/form" method="post">
 					<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
@@ -51,7 +84,7 @@
 							<button type="submit" class="btn btn-primary">회원가입</button>
 						</div>
 					</div>				
-				</form>
+				</form> --%>
 			</div>
 		</div>
 	</div>
