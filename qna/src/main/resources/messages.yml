@@ -1,0 +1,17 @@
+Email:
+  user:
+    email: 이메일 형식에 맞지 않습니다.
+NotEmpty:
+  user:
+    name: 이름은 반드시 입력해야 합니다.
+    password: 비밀번호는 반드시 입력해야 합니다.
+    userId: 사용자 아이디는 반드시 입력해야 합니다.
+Size:
+  user:
+    password: 비밀번호는 크기는 {1}보다 크고 {2}보다 작아야 합니다.
+    userId: 사용자 아이디 크기는 {1}보다 크고 {2}보다 작아야 합니다.
+User:
+  password:
+    mismatch: 비밀번호가 틀립니다.
+  userId:
+    mismatch: 존재하지 않는 사용자입니다.
