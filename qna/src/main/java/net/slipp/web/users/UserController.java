@@ -1,12 +1,16 @@
 package net.slipp.web.users;
 
-import javax.annotation.Resource;
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -40,12 +44,20 @@ public class UserController {
 		model.addAttribute("user", new User());
 		return "users/form";
 	}
-	
+
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String crate(User user) {
+	public String crate(@Valid User user, BindingResult bindingResult) {
 		log.debug("user : {}", user);
+		if (bindingResult.hasErrors()) {
+			log.debug("bindingResult has error!");
+			List<ObjectError> errors = bindingResult.getAllErrors();
+			for (ObjectError error : errors) {
+				log.debug("error : {}, {}", error.getCode(), error.getDefaultMessage());
+			}
+			return "users/form";
+		}
 		userDao.create(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
-		return "users/form";
+		return "redirect:/";
 	}
 }

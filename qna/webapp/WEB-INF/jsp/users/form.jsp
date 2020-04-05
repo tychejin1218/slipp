@@ -22,7 +22,7 @@
 				</div>
 						
 				<!-- Spring form tag를 사용할 때는 modelAttribute를 통해서 자바에 오브젝트(model.addAttribute("user", new User());)와 맵핑이 필요 -->
-				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="post">
+				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users/form" method="post">
 					<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
