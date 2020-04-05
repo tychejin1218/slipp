@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -15,11 +17,14 @@ import net.slipp.domain.users.User;
 
 public class UserDao extends JdbcDaoSupport {
 
+	private static final Logger log = LoggerFactory.getLogger(UserDao.class);
+	
 	@PostConstruct
 	public void initialize() {
 		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
 		resourceDatabasePopulator.addScript(new ClassPathResource("slipp.sql"));
 		DatabasePopulatorUtils.execute(resourceDatabasePopulator, getDataSource());
+		log.info("database initialized success!");
 	}
 
 	public User findById(String userId) {

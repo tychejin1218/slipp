@@ -9,6 +9,9 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	
 	<context:property-placeholder location="classpath:/application-properties.xml" />
+	
+	<!-- Spring에서 @PostConstruct를 통해서 초기화 작업을 하기 위해서는 applicationContext.xml에서 annotation-config 설정이 필요 -->
+	<context:annotation-config />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		p:driverClassName="${database.driverClassName}" 

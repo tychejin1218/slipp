@@ -12,7 +12,7 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String home() {
-		log.debug("logback setting start!");
+		//log.debug("logback setting start!");
 		//prefix("/") + return(home) + suffix(".jsp")
 		return "home";
 	}
