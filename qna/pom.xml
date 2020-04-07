@@ -61,6 +61,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
+			<!-- war로 압축할 때 포함되지 않음 -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
