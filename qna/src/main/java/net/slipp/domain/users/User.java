@@ -7,15 +7,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class User {
 
-	@NotEmpty @Size(min=4, max=12)
+	@NotEmpty
+	@Size(min = 4, max = 12)
 	private String userId;
-	
-	@NotEmpty @Size(min=4, max=12)
+
+	@NotEmpty
+	@Size(min = 4, max = 12)
 	private String password;
-	
+
 	@NotEmpty
 	private String name;
-	
+
 	@Email
 	private String email;
 
@@ -63,6 +65,14 @@ public class User {
 		this.email = email;
 	}
 
+	public boolean matchPassword(Authenticate authenticate) {
+		if (this.password == null) {
+			return false;
+		}
+
+		return this.password.equals(authenticate.getPassword());
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -9,4 +9,4 @@ CREATE TABLE USERS (
 	PRIMARY KEY               (userId)
 );
 
-INSERT INTO USERS VALUES('tychejin', 'password', '아몬드봉봉', 'tychejin@naver.com');
+INSERT INTO USERS VALUES('admin', 'admin', '관리자', 'admin@naver.com');
