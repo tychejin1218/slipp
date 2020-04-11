@@ -94,10 +94,11 @@ public class UserController {
 			throw new NullPointerException();
 		}
 		
-		String userId= (String)temp;
+		// User에서 체크하도록 설정
+		/*String userId= (String)temp;
 		if(!user.matchUserId(userId)) {
 			throw new NullPointerException();
-		}
+		}*/
 		
 		userDao.update(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));

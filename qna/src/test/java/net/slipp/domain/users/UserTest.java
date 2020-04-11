@@ -46,9 +46,22 @@ public class UserTest {
 		Authenticate authenticate = new Authenticate("userId", password);
 		User user = new User("userId", password, "name", "javajigi@slipp.net");
 		assertTrue(user.matchPassword(authenticate));
-		
+
 		authenticate = new Authenticate("userId", "password2");
 		assertFalse(user.matchPassword(authenticate));
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void updateWhenMisMacthUserId() throws Exception {
+		User user = new User("admin", "password", "관리자", "admin@naver.com");
+		User updateUser = new User("admin1", "password", "관리자1", "admin1@naver.com");
+		User updatedUser = user.update(updateUser);
+	}
+	
+	@Test
+	public void update() throws Exception {
+		User user = new User("admin", "password", "관리자", "admin@naver.com");
+		User updateUser = new User("admin", "password", "관리자1", "admin1@naver.com");
+		User updatedUser = user.update(updateUser);
+	}
 }
