@@ -21,19 +21,36 @@
 					<h1>회원가입</h1>
 				</div>
 						
+				<c:choose>
+					<c:when test="${empty user.userId}">
+						<c:set var="method" value="post" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="method" value="put" />
+					</c:otherwise>
+				</c:choose>
+				
 				<!-- Spring form tag를 사용할 때는 modelAttribute를 통해서 자바에 오브젝트(model.addAttribute("user", new User());)와 맵핑이 필요 -->
-				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users/form" method="post">
+				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="${method}">
 					<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
-							<form:input path="userId"/>
-							<form:errors path="userId" cssClass="error" />
+						<c:choose>
+							<c:when test="${empty user.userId}">
+								<form:input path="userId" />
+								<form:errors path="userId" cssClass="error" />
+							</c:when>
+							<c:otherwise>
+								${user.userId}
+								<form:hidden path="userId"/>
+							</c:otherwise>
+						</c:choose>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">비밀번호</label>
 						<div class="controls">
-							<form:input path="password"/>
+							<form:password path="password"/>
 							<form:errors path="password" cssClass="error" />
 						</div>
 					</div>

@@ -72,7 +72,14 @@ public class User {
 
 		return this.password.equals(authenticate.getPassword());
 	}
-	
+
+	public boolean matchUserId(String inputUserId) {
+		if (inputUserId == null) {
+			return false;
+		}
+		return inputUserId.equals(this.userId);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -114,4 +121,5 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
 	}
+
 }
