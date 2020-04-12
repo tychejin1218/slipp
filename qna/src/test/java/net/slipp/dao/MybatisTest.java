@@ -5,6 +5,9 @@ import static org.junit.Assert.assertThat;
 
 import java.io.InputStream;
 
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,6 +16,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import net.slipp.domain.users.User;
 import net.slipp.domain.users.UserTest;
@@ -28,6 +34,20 @@ public class MybatisTest {
 		String resource = "mybatis-config-test.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+		// MyBatis 연동 전에 DBCP 연결
+		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
+		resourceDatabasePopulator.addScript(new ClassPathResource("slipp.sql"));
+		DatabasePopulatorUtils.execute(resourceDatabasePopulator, getDataSource());
+		log.info("database initialized success!");
+	}
+
+	private DataSource getDataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("org.h2.Driver");
+		dataSource.setUrl("jdbc:h2:~/slipp");
+		dataSource.setUsername("sa");
+		return dataSource;
 	}
 
 	@Test

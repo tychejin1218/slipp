@@ -20,6 +20,6 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="UserMapper.xml" />
+		<mapper resource="net/slipp/dao/users/UserMapper.xml" />
 	</mappers>
 </configuration>
