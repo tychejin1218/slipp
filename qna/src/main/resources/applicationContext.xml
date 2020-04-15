@@ -35,8 +35,12 @@
 		p:dataSource-ref="dataSource"
 	/> -->
 
-	<bean id="userDao" class="net.slipp.dao.users.MyBatisUserDao"
+	<!-- <bean id="userDao" class="net.slipp.dao.users.MyBatisUserDao"
 		p:sqlSession-ref="sqlSession"
 		p:dataSource-ref="dataSource"
+	/> -->
+	
+	<bean id="userDao" class="net.slipp.dao.users.MyBatisUserDao"
+		p:sqlSession-ref="sqlSession"
 	/>
 </beans>
