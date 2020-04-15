@@ -19,9 +19,13 @@
 		p:username="${database.username}" 
 		p:password="${database.password}"/>
 		
+	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="classpath:net/slipp/dao/users/UserMapper.xml"/> -->
+		
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
-		p:mapperLocations="classpath:net/slipp/dao/users/UserMapper.xml"/>
+		p:configLocation="classpath:mybatis-config.xml"/>
 		
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
@@ -33,5 +37,6 @@
 
 	<bean id="userDao" class="net.slipp.dao.users.MyBatisUserDao"
 		p:sqlSession-ref="sqlSession"
+		p:dataSource-ref="dataSource"
 	/>
 </beans>
