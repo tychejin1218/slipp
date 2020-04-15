@@ -8,6 +8,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	
+	<context:component-scan base-package="net.slipp.dao">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
 	<context:property-placeholder location="classpath:/application-properties.xml" />
 	
 	<!-- Spring에서 @PostConstruct를 통해서 초기화 작업을 하기 위해서는 applicationContext.xml에서 annotation-config 설정이 필요 -->
@@ -40,9 +44,9 @@
 		p:dataSource-ref="dataSource"
 	/> -->
 	
-	<bean id="userDao" class="net.slipp.dao.users.MyBatisUserDao"
+	<!-- <bean id="userDao" class="net.slipp.dao.users.MyBatisUserDao"
 		p:sqlSession-ref="sqlSession"
-	/>
+	/> -->
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
 		p:dataSource-ref="dataSource"

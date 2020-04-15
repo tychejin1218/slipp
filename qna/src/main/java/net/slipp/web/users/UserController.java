@@ -2,6 +2,7 @@ package net.slipp.web.users;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -29,7 +30,9 @@ public class UserController {
 	/*Autowired를 사용해서 UserDao와 UserController 간의 의존관계를 설정 
 	- 소스 구현 시에는 의존관계 설정을 위해서는 setMethod가 있어야지 UserDao 인스턴스 주입이 가능했는데, spring에서 자바 리플렉션을 통해서 UserDao를 인스턴스를주입할 수 있도록 제공
 	- setMethod를 만들어서 @Autowired 의존관계를 설정하여도 상관없음*/
-	@Autowired
+	//@Autowired
+	//@Resource(name = "myBatisUserDao")
+	@Resource(name = "userDao")
 	private UserDao userDao;
 
 	/*@Autowired
@@ -63,20 +66,20 @@ public class UserController {
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("{userId}/form")
 	public String updateForm(@PathVariable("userId") String userId, Model model) { // @PathVariable 변수명이 다른 경우 name을 지정할 수 있음
 		if (userId == null) {
 			throw new IllegalArgumentException("사용자 아이디가 필요합니다.");
 		}
-		
+
 		User user = userDao.findById(userId);
 		model.addAttribute("user", user);
 		return "users/form";
 	}
-	
+
 	/* RequestMethod 타입으로 crate, update을 구분 */
-	@RequestMapping(value="", method=RequestMethod.PUT)
+	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public String update(@Valid User user, BindingResult bindingResult, HttpSession session) {
 		log.debug("User : {}", user);
 		if (bindingResult.hasErrors()) {
@@ -85,26 +88,26 @@ public class UserController {
 			for (ObjectError error : errors) {
 				log.debug("error : {}, {}", error.getObjectName(), error.getDefaultMessage());
 			}
-			
+
 			return "users/form";
 		}
-		
+
 		Object temp = session.getAttribute("userId");
 		if (temp == null) {
 			throw new NullPointerException();
 		}
-		
+
 		// User에서 체크하도록 설정
 		/*String userId= (String)temp;
 		if(!user.matchUserId(userId)) {
 			throw new NullPointerException();
 		}*/
-		
+
 		userDao.update(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("/login/form")
 	public String loginForm(Model model) {
 		model.addAttribute("authenticate", new Authenticate());
@@ -135,7 +138,7 @@ public class UserController {
 
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("userId");
