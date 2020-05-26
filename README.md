@@ -10,5 +10,4 @@
   - ##### Maven 3.3.9
 
 - #### 개발 설명
-  - ##### <a href="https://www.youtube.com/watch?v=l0k6QVb9JCo&list=PLqaSEyuwXkSpTuQbtv3E2haLA1WY7_MOt" target="_blank"><img src="qna/YouTube-social-icon_red_24px.png" />
-  - ##### https://www.youtube.com/playlist?list=PLqaSEyuwXkSpTuQbtv3E2haLA1WY7_MOt
+  - ##### <a href="https://www.youtube.com/watch?v=l0k6QVb9JCo&list=PLqaSEyuwXkSpTuQbtv3E2haLA1WY7_MOt" target="_blank"><img src="qna/YouTube-social-icon_red_24px.png" /> Spring 기반 웹 프로그래밍 강의
