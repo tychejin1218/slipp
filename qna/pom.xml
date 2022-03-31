@@ -10,7 +10,7 @@
 	<!-- properties를 통해서 중복된 dependency의 버전을 관리 -->
 	<properties>
 		<h2.database.version>1.4.179</h2.database.version>
-		<org.springframework.version>4.3.25.RELEASE</org.springframework.version>
+		<org.springframework.version>5.3.18</org.springframework.version>
 	</properties>
 
 	<dependencies>
